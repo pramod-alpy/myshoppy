@@ -10,9 +10,7 @@ MyShoppy is a modern e-commerce web application built with Laravel, Livewire, an
 ```
 git clone https://github.com/pramod-alpy/myshoppy.git
 cd myshoppy
-
 ```
-
 2️⃣ Install PHP Dependencies
 ```
 composer install
@@ -46,10 +44,13 @@ php artisan migrate
 ```
 php artisan db:seed
 ```
-🔟 Start Backend Server
+🔟 Start Backend Server & Front end
 ```
 php artisan serve
+
+npm run dev
 ```
+
 
 ⚙️ Tech Stack
 
