@@ -8,10 +8,10 @@ MyShoppy is a modern e-commerce web application built with Laravel, Livewire, an
 
 1️⃣ Clone the Repository
 ```
-
+git clone https://github.com/pramod-alpy/myshoppy.git
+cd myshoppy
 
 ```
-
 
 2️⃣ Install PHP Dependencies
 ```
