@@ -35,8 +35,9 @@ DB_PORT=3306
 DB_DATABASE=cart
 DB_USERNAME=root
 DB_PASSWORD=
-
+```
 8️⃣ Run Migrations
+
 ```
 php artisan migrate
 ```
@@ -45,6 +46,7 @@ php artisan migrate
 php artisan db:seed
 ```
 🔟 Start Backend Server & Front end
+
 ```
 php artisan serve
 
