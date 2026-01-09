@@ -3,6 +3,28 @@ MyShoppy Ecommerce App
 
 MyShoppy is a modern e-commerce web application built with Laravel, Livewire, and Vue.js. It provides a complete shopping experience including product listing, cart management, user authentication, admin user product management,admin Stock alert job and admin Daily sales report etc.
 
+
+✨ Features
+
+👤 User Features
+
+* Product listing
+
+* Cart management
+
+* User authentication
+
+* Secure checkout with Stripe
+
+🛠️ Admin Features
+
+* Product management
+
+* Stock alert job
+
+* Daily sales report
+
+
 📦 Installation
 
 
@@ -45,14 +67,18 @@ php artisan migrate
 ```
 php artisan db:seed
 ```
-🔟 Start Backend Server & Front end
+🔟 Start Development Servers
 
+Backend
 ```
 php artisan serve
 
-npm run dev
 ```
+Frontend
+```
+npm run dev
 
+```
 
 ⚙️ Tech Stack
 
@@ -61,3 +87,27 @@ npm run dev
 * Frontend: Vue.js, Tailwind CSS
 
 * Other: Composer, npm
+
+📧 Email Configuration
+
+```
+MAIL_MAILER=smtp
+MAIL_HOST=smtp.gmail.com
+MAIL_PORT=587
+MAIL_USERNAME=
+MAIL_PASSWORD=
+MAIL_ENCRYPTION=tls
+MAIL_FROM_ADDRESS=
+MAIL_FROM_NAME="MyShoppy"
+
+```
+
+💳 Stripe Configuration
+
+```
+STRIPE_KEY=
+STRIPE_SECRET=
+VITE_STRIPE_KEY=
+
+
+```

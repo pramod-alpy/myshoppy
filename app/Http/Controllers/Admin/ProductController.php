@@ -61,20 +61,16 @@ class ProductController extends Controller
             'description' => 'nullable|string',
             'stock_quantity' => 'required|integer|min:1',
             'alert_qty' => 'required|integer|min:1',
-            'status'          => 'required|boolean',   
-            'image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
+            'status'          => 'required|boolean'           
         ]);    
-        $validated['status'] = (bool) $request->status;
-        if ($request->hasFile('image')) {   
-           
-            if ($product->image) {
-                Storage::disk('public')->delete($product->image);
-            }
-    
-            $validated['image'] = $request->file('image')
-                ->store('products', 'public');
-        }    
-      
+        $validated['status'] = (bool) $request->status;     
+
+       if ($request->hasFile('image')) {         
+        if ($product->image && Storage::disk('public')->exists($product->image)) {
+            Storage::disk('public')->delete($product->image);
+        }       
+        $validated['image'] = $request->file('image')->store('products', 'public');
+    }
         $product->update($validated);
 
     return redirect()
@@ -83,12 +79,10 @@ class ProductController extends Controller
     }
 
     public function destroy(Product $product)
-    {
-       
+    {       
     if ($product->image && Storage::disk('public')->exists($product->image)) {
         Storage::disk('public')->delete($product->image);
-    }
-   
+    }   
     $product->delete();
         return Inertia::location(route('admin.products'));        
     }

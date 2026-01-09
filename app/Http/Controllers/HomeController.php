@@ -13,8 +13,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $products = Product::where('status', true)->get();
-
+        $products = Product::where('status', true)->where('stock_quantity', '>', 0)->get();
         $cartItems = Auth::check()
             ? Cart::where('user_id', Auth::id())
                 ->get()

@@ -24,8 +24,10 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
+    Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');   
+    Route::post('/checkout/stripe-intent', [CheckoutController::class, 'createStripeIntent']);
     Route::post('/checkout/place-order', [CheckoutController::class, 'placeOrder']);
+    Route::get('/order-success/{order}', [CheckoutController::class, 'success'])->name('order.success');
 });
 
 Route::middleware('auth')->group(function () {
@@ -36,7 +38,7 @@ Route::middleware('auth')->group(function () {
 
 Route::prefix('admin')
     ->middleware(['auth', AdminMiddleware::class])
-    ->name('admin.') // ✅ add prefix for route names
+    ->name('admin.') 
     ->group(function () {
         Route::get('/products', [ProductController::class, 'index'])->name('products');         // admin.products
         Route::get('/products/create', [ProductController::class, 'create'])->name('products.create'); // admin.products.create
@@ -45,25 +47,6 @@ Route::prefix('admin')
         Route::post('/products/{product}', [ProductController::class, 'update'])->name('products.update');       
         Route::delete('/products/{product}', [ProductController::class, 'destroy'])->name('products.destroy');
     });
-
-/*
-Route::prefix('admin')
-    ->middleware(['auth', AdminMiddleware::class])  
-
-    ->group(function () {
-        Route::get('/products', [ProductController::class, 'index'])->name('admin.products');
-        Route::post('/products', [ProductController::class, 'store'])->name('admin.products.store');
-    });
-
-
-/*
-Route::middleware(['auth', 'admin'])
-     ->prefix('admin')
-     ->name('admin.')
-     ->group(function() {
-         Route::get('/products', [ProductController::class, 'index'])->name('products');
-         Route::post('/products', [ProductController::class, 'store'])->name('products.store');
-     });*/
 
 Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])
      ->name('logout');
