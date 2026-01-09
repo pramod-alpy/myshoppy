@@ -111,3 +111,21 @@ VITE_STRIPE_KEY=
 
 
 ```
+
+✨ Screenshots
+
+Home Page
+
+![Home](screenshots/Home.png)
+
+Admin Product List & Manage
+
+![Product List in Admin](screenshots/Admin-ListProducts.png)
+
+Cart Page
+
+![Cart](screenshots/cart.png)
+
+Payment Page
+
+![Payment](screenshots/payment.png)
